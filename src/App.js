@@ -1,25 +1,24 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import WelcomePage from './components/WelcomePage';
+import UserSelection from './components/UserSelection';
+import UserInput from './components/UserInput';
+import BuddyInput from './components/BuddyInput';
+import UserSchedule from './components/UserSchedule';
+import { Route } from 'react-router-dom';
+
 import './App.css';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+       <Route exact path='/' component={WelcomePage} />
+        <Route path='/selection' component={UserSelection}/>
+        <Route path='/user-input' component={UserInput} />
+        <Route path='/buddy-input' component={BuddyInput} />
+        <Route path='/user-schedule' component={UserSchedule} />
+
+
       </div>
     );
   }
