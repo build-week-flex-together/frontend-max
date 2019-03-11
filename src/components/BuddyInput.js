@@ -11,4 +11,4 @@ const BuddyInput = () => {
      );
 }
  
-export default BuddyInput;
+export default BuddyInput; 
