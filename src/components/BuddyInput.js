@@ -25,7 +25,7 @@ class BuddyInput extends React.Component {
                 ...JSON.parse(localStorage.email),
                 ...JSON.parse(localStorage.phone),
                 ...JSON.parse(localStorage.mobility),
-                ...JSON.parse(localStorage.availabilityTimes)
+                // ...JSON.parse(localStorage.availabilityTimes)
             },
             inviteInfo: {
                 ...JSON.parse(localStorage.name),
@@ -35,7 +35,7 @@ class BuddyInput extends React.Component {
             }
             
         }
-        Axios.post('http://localhost:3333/api/auth/onboard', newUser)
+        Axios.post('https://test-ft-api.herokuapp.com/api/auth/onboard', newUser)
         .then(response => {
           console.log(response)
           this.setState({
@@ -99,8 +99,7 @@ class BuddyInput extends React.Component {
                     /> </li>
                 </form>
                 <h2>Mobility Level (choose one)</h2>
-            {/* Need to implement radio button options from material ui but for now 
-            there will be meaningless buttons just for sake of viewing */}
+            {/* Need to implement radio button options from material ui  */}
                     <button value='1' onClick={this.handleMobilityChange}>Low</button>
                     <button value='2' onClick={this.handleMobilityChange}>Medium</button>
                     <button value='3' onClick={this.handleMobilityChange}>High</button>

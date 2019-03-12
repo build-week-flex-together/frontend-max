@@ -14,8 +14,12 @@ class UserSelection extends React.Component {
     }
 
 handleUser = (event) => {
+    let value = event.target.value;
+    if (event.target.value === '1' || '2') {
+      value = parseInt(value, 10)
+    }
     this.setState({
-        userType: event.target.value
+        userType: value
     })
 }
 
