@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Axios from 'axios';
 
 
 class BuddyInput extends React.Component {
@@ -7,22 +8,58 @@ class BuddyInput extends React.Component {
         super(props);
         
     this.state = {
+        inviteInfo: {
         name: '',
         email: '',
         phone: '',
         mobility: ''
+        }  
+    }
+    }
+    addUser = () => {
         
-    }
-    }
+        const newUser = {
+            myInfo: {
+                ...JSON.parse(localStorage.userType),
+                ...JSON.parse(localStorage.name),
+                ...JSON.parse(localStorage.email),
+                ...JSON.parse(localStorage.phone),
+                ...JSON.parse(localStorage.mobility),
+                ...JSON.parse(localStorage.availabilityTimes)
+            },
+            inviteInfo: {
+                ...JSON.parse(localStorage.name),
+                ...JSON.parse(localStorage.email),
+                ...JSON.parse(localStorage.phone),
+                ...JSON.parse(localStorage.mobility)
+            }
+            
+        }
+        Axios.post('http://localhost:3333/api/auth/onboard', newUser)
+        .then(response => {
+          console.log(response)
+          this.setState({
+            newUser: response.data,
+            
+          })
+        })
+        .catch(err => console.log(err))
+      }
+
+ 
 
     componentDidUpdate(){
-        localStorage.setItem('buddyInput', JSON.stringify(this.state));
+        localStorage.setItem('inviteInfo', JSON.stringify(this.state));
     }
     
     
 
-      handleMobilityChange = (event) => {
-        this.setState({mobility: event.target.value});
+    handleMobilityChange = (event) => {
+        let value = event.target.value;
+        if (event.target.value === '1' || '2' || '3') {
+          value = parseInt(value, 10)
+        }
+        this.setState({mobility: value});
       }
     
     
@@ -71,7 +108,7 @@ class BuddyInput extends React.Component {
                 <br/>
                 <br/>
     
-                  <Link to='/user-completed'>  <button /*onSubmit here will pass everything to db */ >SUBMIT</button> </Link>
+                  <Link to='/user-completed'>  <button onClick={this.addUser} >SUBMIT</button> </Link>
             </div>
          );
         }

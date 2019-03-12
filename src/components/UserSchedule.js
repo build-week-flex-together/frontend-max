@@ -5,7 +5,8 @@ class UserSchedule extends React.Component {
     constructor() {
         super();
         this.state = {
-            timezone: ''
+            timezone: '',
+            availabilityTimes: []
         }
     }
 

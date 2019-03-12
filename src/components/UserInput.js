@@ -1,33 +1,56 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+
 class UserInput extends React.Component {
 constructor(props) {
     super(props);
     
 this.state = {
-    
+    myInfo: {
     
     name: '',
     email: '',
     phone: '',
-    notify: '',
+    notifyEmail: false,
+    notifyPhone: false,
     mobility: ''
     
-     
+    }  
 }
 }
 
+
+
 componentDidUpdate(){
-    localStorage.setItem('userInput', JSON.stringify(this.state));
+    localStorage.setItem('myInfo', JSON.stringify(this.state));
 }
 
 handleChange = (event) => {
-    this.setState({notify: event.target.value});
+    if(event.target.value === 'text') {
+   return this.setState({
+        
+        notifyPhone: true
+    })
+} else if(event.target.value === 'email') {
+    return this.setState({
+        
+        notifyEmail: true
+    })
+} else if(event.target.value === 'text-email') {
+    return this.setState({
+        notifyPhone: true,
+        notifyEmail: true
+    })
+}
   }
 
   handleMobilityChange = (event) => {
-    this.setState({mobility: event.target.value});
+    let value = event.target.value;
+    if (event.target.value === '1' || '2' || '3') {
+      value = parseInt(value, 10)
+    }
+    this.setState({mobility: value});
   }
 
 handleInputChange = (event) => {
@@ -70,6 +93,7 @@ handleInputChange = (event) => {
                     <option value='Select'>Choose One</option>
                     <option value='text'>Text Message</option>
                     <option value='email'>Email</option>
+                    <option value='text-email'>Text & Email</option>
                     
                 </select>
                 </h3>
