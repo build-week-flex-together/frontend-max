@@ -6,17 +6,28 @@ constructor(props) {
     super(props);
     
 this.state = {
+    
+    
     name: '',
     email: '',
     phone: '',
-    value: '',
-    level: ''
+    notify: '',
+    mobility: ''
     
+     
 }
 }
 
+componentDidUpdate(){
+    localStorage.setItem('userInput', JSON.stringify(this.state));
+}
+
 handleChange = (event) => {
-    this.setState({value: event.target.value});
+    this.setState({notify: event.target.value});
+  }
+
+  handleMobilityChange = (event) => {
+    this.setState({mobility: event.target.value});
   }
 
 handleInputChange = (event) => {
@@ -24,6 +35,8 @@ handleInputChange = (event) => {
         [event.target.name]: event.target.value
     })
 }
+
+
 
 
 
@@ -53,9 +66,9 @@ handleInputChange = (event) => {
             </form>
 
             <h3>I prefer to receive notifications by {' '}
-                <select value={this.state.value} onChange={this.handleChange}>
-                    <option value='textemail'>Text & Email</option>
-                    <option value='txt'>Text Message</option>
+                <select value={this.state.notify} onChange={this.handleChange}>
+                    <option value='Select'>Choose One</option>
+                    <option value='text'>Text Message</option>
                     <option value='email'>Email</option>
                     
                 </select>
@@ -63,9 +76,16 @@ handleInputChange = (event) => {
                 <h2>Mobility Level (choose one)</h2>
             {/* Need to implement radio button options from material ui but for now 
             there will be meaningless buttons just for sake of viewing */}
-            <button>Low</button>
-            <button>Medium</button>
-            <button>High</button>
+         
+         
+         
+                    
+                    <button value='1' onClick={this.handleMobilityChange}>Low</button>
+                    <button value='2' onClick={this.handleMobilityChange}>Medium</button>
+                    <button value='3' onClick={this.handleMobilityChange}>High</button>
+                    
+               
+                
                 <br/>
                 <br/>
                 <br/>
