@@ -1,12 +1,42 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './UserSchedule.css' 
+
+const days = [
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday'
+]
+
+const timeSlots = [
+'6:00AM',
+'6:30AM',
+'7:00AM',
+'7:30AM',
+'8:00AM',
+'8:30AM',
+'9:00AM',
+'9:30AM',
+'10:00AM',
+'10:30AM',
+'11:00AM',
+'11:30AM',
+]
+
+
 
 class UserSchedule extends React.Component {
+
     constructor() {
         super();
         this.state = {
             timezone: '',
-            availabilityTimes: []
+            availabilityTimes: [],
+
         }
     }
 
@@ -20,6 +50,8 @@ class UserSchedule extends React.Component {
     handleChange = (event) => {
         this.setState({timezone: event.target.value});
       }
+
+      
 
 
     render() {
@@ -38,7 +70,25 @@ class UserSchedule extends React.Component {
                     
                 </select></p>
 
-                <h1>CALENDAR GOES HERE</h1>
+               
+                {/* Set to flexbox for calendar class for rows */}
+                <div className='calendar'>
+                {days.map(day => (
+                    <div className='column' key={day}>
+                    <h4>{day}</h4>
+                    {/* time slots class */}
+                    <div className='time-slots'>
+                    {timeSlots.map(time => (
+                        <div className='time' key={time} > 
+                        <p>{time}</p>
+                        </div>
+                    ))}
+                    </div>
+                    </div>
+                ))}
+                </div>
+                <br/>
+              
 
                 <Link to='/buddy-input'><button>Next</button></Link>
         </div>
