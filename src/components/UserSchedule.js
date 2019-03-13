@@ -1,31 +1,50 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Calendar from './Calendar';
 import './UserSchedule.css' 
 
+const timeSlots = [
+    '6:00AM',
+    '6:30AM',
+    '7:00AM',
+    '7:30AM',
+    '8:00AM',
+    '8:30AM',
+    '9:00AM',
+    '9:30AM',
+    '10:00AM',
+    '10:30AM',
+    '11:00AM',
+    '11:30AM',
+    
+    
+    ]
+
 const days = [
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-    'Sunday'
+   {day: 'Monday',
+    slots: timeSlots
+},
+{day: 'Tuesday',
+slots: timeSlots
+},
+{day: 'Wednesday',
+slots: timeSlots
+},
+{day: 'Thursday',
+slots: timeSlots
+},
+{day: 'Friday',
+slots: timeSlots
+},
+{day: 'Saturday',
+slots: timeSlots
+},
+{day: 'Sunday',
+slots: timeSlots
+}
 ]
 
-const timeSlots = [
-'6:00AM',
-'6:30AM',
-'7:00AM',
-'7:30AM',
-'8:00AM',
-'8:30AM',
-'9:00AM',
-'9:30AM',
-'10:00AM',
-'10:30AM',
-'11:00AM',
-'11:30AM',
-]
+
 
 
 
@@ -35,6 +54,17 @@ class UserSchedule extends React.Component {
         super();
         this.state = {
             timezone: '',
+            timeBlocks: [
+                {
+                  day: 'Wednesday',
+                  slots: ['6:30AM', '7:00AM', '7:30AM', '8:30AM']
+                },
+                {
+                  day: 'Friday',
+                  slots: ['6:30AM', '7:00AM', '7:30AM', '8:30AM', '10:30AM']
+                },
+              ],
+            
             availabilityTimes: [],
 
         }
@@ -51,10 +81,8 @@ class UserSchedule extends React.Component {
         this.setState({timezone: event.target.value});
       }
 
-      
 
-
-    render() {
+render() {
     return ( 
         <div>
             <h3>What's a good time to complete the program?</h3>
@@ -71,22 +99,8 @@ class UserSchedule extends React.Component {
                 </select></p>
 
                
-                {/* Set to flexbox for calendar class for rows */}
-                <div className='calendar'>
-                {days.map(day => (
-                    <div className='column' key={day}>
-                    <h4>{day}</h4>
-                    {/* time slots class */}
-                    <div className='time-slots'>
-                    {timeSlots.map(time => (
-                        <div className='time' key={time} > 
-                        <p>{time}</p>
-                        </div>
-                    ))}
-                    </div>
-                    </div>
-                ))}
-                </div>
+                <Calendar calendarData={days}/>
+               
                 <br/>
               
 
