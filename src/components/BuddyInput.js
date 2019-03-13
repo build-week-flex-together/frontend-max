@@ -8,34 +8,37 @@ class BuddyInput extends React.Component {
         super(props);
         
     this.state = {
-        inviteInfo: {
-        name: '',
-        email: '',
-        phone: '',
-        mobility: ''
-        }  
+        
+        recipient_name: '',
+        recipient_email: '',
+        recipient_phone_number: '',
+        recipient_mobility_level: ''
+          
     }
     }
     addUser = () => {
-        
+        console.log(localStorage.is_companion)
         const newUser = {
-            myInfo: {
-                ...JSON.parse(localStorage.userType),
-                ...JSON.parse(localStorage.name),
-                ...JSON.parse(localStorage.email),
-                ...JSON.parse(localStorage.phone),
-                ...JSON.parse(localStorage.mobility),
-                // ...JSON.parse(localStorage.availabilityTimes)
-            },
-            inviteInfo: {
-                ...JSON.parse(localStorage.name),
-                ...JSON.parse(localStorage.email),
-                ...JSON.parse(localStorage.phone),
-                ...JSON.parse(localStorage.mobility)
-            }
+            
+            
+                ...JSON.parse(localStorage.getItem('is_companion')),
+               
+                 ...JSON.parse(localStorage.getItem('myInfo')),
+            //    'email': JSON.parse(localStorage.getItem('email')),
+            //   'phone_number': JSON.parse(localStorage.getItem('phone_number')),
+            //    'mobility_level': JSON.parse(localStorage.getItem('mobility_level')),
+                ...JSON.parse(localStorage.getItem('userSchedule')),
+            
+            
+                ...JSON.parse(localStorage.getItem('inviteInfo')),
+            //    'recipient_email': JSON.parse(localStorage.getItem('recipient_email')),
+            //   'recipient_phone_number': JSON.parse(localStorage.getItem('recipient_phone_number')),
+            //   'recipient_mobility_level': JSON.parse(localStorage.getItem('recipient_mobility_level'))
+            
             
         }
-        Axios.post('https://test-ft-api.herokuapp.com/api/auth/onboard', newUser)
+        console.log(newUser)
+        Axios.post('https://flextogether.herokuapp.com/api/invite', newUser)
         .then(response => {
           console.log(response)
           this.setState({
@@ -55,11 +58,11 @@ class BuddyInput extends React.Component {
     
 
     handleMobilityChange = (event) => {
-        let value = event.target.value;
-        if (event.target.value === '1' || '2' || '3') {
-          value = parseInt(value, 10)
-        }
-        this.setState({mobility: value});
+        // let value = event.target.value;
+        // if (event.target.value === '1' || '2' || '3') {
+        //   value = parseInt(value, 10)
+        // }
+        this.setState({recipient_mobility_level: event.target.value});
       }
     
     
@@ -82,27 +85,27 @@ class BuddyInput extends React.Component {
                    <li> <input 
                     onChange={this.handleInputChange}
                     placeholder="Buddy Name"
-                    value={this.state.name}
-                    name="name" 
+                    value={this.state.recipient_name}
+                    name="recipient_name" 
                     /> </li>
                    <li> <input 
                     onChange={this.handleInputChange}
                     placeholder="Buddy Email"
-                    value={this.state.email}
-                    name="email"
+                    value={this.state.recipient_email}
+                    name="recipient_email"
                     /> </li>
                    <li> <input 
                     onChange={this.handleInputChange}
                     placeholder="Buddy Phone Number"
-                    value={this.state.phone}
-                    name="phone"
+                    value={this.state.recipient_phone}
+                    name="recipient_phone_number"
                     /> </li>
                 </form>
                 <h2>Mobility Level (choose one)</h2>
             {/* Need to implement radio button options from material ui  */}
-                    <button value='1' onClick={this.handleMobilityChange}>Low</button>
-                    <button value='2' onClick={this.handleMobilityChange}>Medium</button>
-                    <button value='3' onClick={this.handleMobilityChange}>High</button>
+                    <button value='Low' onClick={this.handleMobilityChange}>Low</button>
+                    <button value='Medium' onClick={this.handleMobilityChange}>Medium</button>
+                    <button value='High' onClick={this.handleMobilityChange}>High</button>
                 <br/>
                 <br/>
                 <br/>

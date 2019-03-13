@@ -7,16 +7,15 @@ constructor(props) {
     super(props);
     
 this.state = {
-    myInfo: {
+    
     
     name: '',
     email: '',
-    phone: '',
-    notifyEmail: false,
-    notifyPhone: false,
-    mobility: ''
+    phone_number: '',
+    notification_preference: '',
+    mobility_level: ''
     
-    }  
+     
 }
 }
 
@@ -27,30 +26,34 @@ componentDidUpdate(){
 }
 
 handleChange = (event) => {
-    if(event.target.value === 'text') {
-   return this.setState({
+
+    this.setState({
+        notification_preference: event.target.value
+    })
+//     if(event.target.value === 'text') {
+//    return this.setState({
         
-        notifyPhone: true
-    })
-} else if(event.target.value === 'email') {
-    return this.setState({
+//         notifyPhone: true
+//     })
+// } else if(event.target.value === 'email') {
+//     return this.setState({
         
-        notifyEmail: true
-    })
-} else if(event.target.value === 'text-email') {
-    return this.setState({
-        notifyPhone: true,
-        notifyEmail: true
-    })
-}
+//         notifyEmail: true
+//     })
+// } else if(event.target.value === 'text-email') {
+//     return this.setState({
+//         notifyPhone: true,
+//         notifyEmail: true
+//     })
+// }
   }
 
   handleMobilityChange = (event) => {
-    let value = event.target.value;
-    if (event.target.value === '1' || '2' || '3') {
-      value = parseInt(value, 10)
-    }
-    this.setState({mobility: value});
+    // let value = event.target.value;
+    // if (event.target.value === '1' || '2' || '3') {
+    //   value = parseInt(value, 10)
+    // }
+    this.setState({mobility_level: event.target.value});
   }
 
 handleInputChange = (event) => {
@@ -83,17 +86,17 @@ handleInputChange = (event) => {
                <li> <input 
                 onChange={this.handleInputChange}
                 placeholder="Phone Number"
-                value={this.state.phone}
-                name="phone"
+                value={this.state.phone_number}
+                name="phone_number"
                 /> </li>
             </form>
 
             <h3>I prefer to receive notifications by {' '}
                 <select value={this.state.notify} onChange={this.handleChange}>
                     <option value='Select'>Choose One</option>
-                    <option value='text'>Text Message</option>
-                    <option value='email'>Email</option>
-                    <option value='text-email'>Text & Email</option>
+                    <option value='Text'>Text Message</option>
+                    <option value='Email'>Email</option>
+                    <option value='Text & Email'>Text & Email</option>
                     
                 </select>
                 </h3>
@@ -104,9 +107,9 @@ handleInputChange = (event) => {
          
          
                     
-                    <button value='1' onClick={this.handleMobilityChange}>Low</button>
-                    <button value='2' onClick={this.handleMobilityChange}>Medium</button>
-                    <button value='3' onClick={this.handleMobilityChange}>High</button>
+                    <button value='Low' onClick={this.handleMobilityChange}>Low</button>
+                    <button value='Medium' onClick={this.handleMobilityChange}>Medium</button>
+                    <button value='High' onClick={this.handleMobilityChange}>High</button>
                     
                
                 

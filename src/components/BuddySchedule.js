@@ -13,9 +13,9 @@ class BuddySchedule extends React.Component {
     render() {
     return ( 
         <div>
-            <h3>Here are some good times for [User 1], do any of these work for you?</h3>
+            <h3>Here are some good times for USER, do any of these work for you?</h3>
             <p>To complete the beta we are asking that people commit to one <br/>
-             30 minute time block once a week. Please choose what times work well for you.</p>
+             30 minute time block once a week. Please choose what times work well for you.`</p>
 
         <Calendar calendarData={this.state.userSchedule}/>
 

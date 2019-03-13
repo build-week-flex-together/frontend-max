@@ -5,23 +5,30 @@ class Calendar extends React.Component {
     constructor(props) {
         super(props);
         this.state = { 
-            timeBlocks: [],
+            availability: [
+                // {
+                // day: '',
+                // timeSlots: [
+
+                // ]
+                // }
+            ],
             
          }
     }
 
     componentDidUpdate(){
         if(this.props.location.pathname === '/user-schedule') {
-        localStorage.setItem('userSchedule', JSON.stringify(this.state.timeBlocks));
+        localStorage.setItem('userSchedule', JSON.stringify(this.state.availability));
 
     } else if(this.props.location.pathname === '/buddy-schedule') {
-        localStorage.setItem('buddySchedule', JSON.stringify(this.state.timeBlocks));
+        localStorage.setItem('buddySchedule', JSON.stringify(this.state.availability));
     }
 }
 
     getClassName = (day, time) => {
         let isSelected = false;
-        this.state.timeBlocks.forEach(block => {
+        this.state.availability.forEach(block => {
           if (block.day === day && block.slots.includes(time)) {
             isSelected = true;
           }
@@ -30,12 +37,12 @@ class Calendar extends React.Component {
       }
     
       handleTime = (day, time) => {
-        let timeBlocks = this.state.timeBlocks;
-        let dayBlock = timeBlocks.find(block => block.day === day);
+        let availability = this.state.availability;
+        let dayBlock = availability.find(block => block.day === day);
         if (!dayBlock) {
           dayBlock = { day, slots: [time] };
-          timeBlocks = [
-            ...this.state.timeBlocks,
+          availability = [
+            ...this.state.availability,
             dayBlock,
           ];
         } else if (dayBlock.slots.includes(time)) {
@@ -44,7 +51,7 @@ class Calendar extends React.Component {
             ...dayBlock,
             slots: dayBlock.slots.filter(timeInFilter => timeInFilter !== time)
           }; 
-          timeBlocks = this.state.timeBlocks.map(dayFromMap => {
+          availability = this.state.availability.map(dayFromMap => {
             if (dayFromMap.day === day) {
                 if (!dayBlock.slots.length) return null;
               return dayBlock
@@ -59,16 +66,16 @@ class Calendar extends React.Component {
               time,
             ]
           };
-          timeBlocks = this.state.timeBlocks.map(dayFromMap => {
+          availability = this.state.availability.map(dayFromMap => {
             if (dayFromMap.day === day) {
               return dayBlock
             }
             return dayFromMap;
         })
         }
-        timeBlocks = timeBlocks.filter(block => block)
+        availability = availability.filter(block => block)
         this.setState({
-          timeBlocks
+            availability
         })
       }
 
