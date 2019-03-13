@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import WelcomePage from './components/WelcomePage';
-// import Login from './components/Login';
 import UserSelection from './components/UserSelection';
 import UserInput from './components/UserInput';
 import BuddyInput from './components/BuddyInput';
@@ -17,7 +16,7 @@ class App extends Component {
 constructor(){
   super();
   this.state = {
-    
+
   }
 }
 
@@ -28,7 +27,6 @@ constructor(){
     return (
       <div className="App">
        <Route exact path='/' component={WelcomePage} />
-       {/* <Route path='/login' component={Login} /> */}
         <Route path='/selection' component={UserSelection}/>
         <Route path='/user-input' component={UserInput} />
         <Route path='/buddy-input' component={BuddyInput} />

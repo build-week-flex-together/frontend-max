@@ -1,19 +1,90 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Calendar from './Calendar';
+import './UserSchedule.css' 
+
+const timeSlots = [
+    '6:00AM',
+    '6:30AM',
+    '7:00AM',
+    '7:30AM',
+    '8:00AM',
+    '8:30AM',
+    '9:00AM',
+    '9:30AM',
+    '10:00AM',
+    '10:30AM',
+    '11:00AM',
+    '11:30AM',
+    '12:00PM',
+    '12:30APM',
+    '1:00PM',
+    '1:30PM',
+    '2:00PM',
+    '2:30PM',
+    '3:00PM',
+    '3:30PM',
+    '4:00PM',
+    '4:30PM',
+    '5:00PM',
+    '5:30PM',
+    
+    ]
+
+const days = [
+   {day: 'Monday',
+    slots: timeSlots
+},
+{day: 'Tuesday',
+slots: timeSlots
+},
+{day: 'Wednesday',
+slots: timeSlots
+},
+{day: 'Thursday',
+slots: timeSlots
+},
+{day: 'Friday',
+slots: timeSlots
+},
+{day: 'Saturday',
+slots: timeSlots
+},
+{day: 'Sunday',
+slots: timeSlots
+}
+]
+
+
+
+
 
 class UserSchedule extends React.Component {
+
     constructor() {
         super();
         this.state = {
             timezone: '',
-            availabilityTimes: []
+            // timeBlocks: [
+            //     {
+            //       day: 'Wednesday',
+            //       slots: ['6:30AM', '7:00AM', '7:30AM', '8:30AM']
+            //     },
+            //     {
+            //       day: 'Friday',
+            //       slots: ['6:30AM', '7:00AM', '7:30AM', '8:30AM', '10:30AM']
+            //     },
+            //   ],
+            
+            // availabilityTimes: [],
+
         }
     }
 
 
 
     componentDidUpdate(){
-        localStorage.setItem('userSchedule', JSON.stringify(this.state));
+        localStorage.setItem('timeZone', JSON.stringify(this.state));
     }
 
 
@@ -22,7 +93,7 @@ class UserSchedule extends React.Component {
       }
 
 
-    render() {
+render() {
     return ( 
         <div>
             <h3>What's a good time to complete the program?</h3>
@@ -31,6 +102,7 @@ class UserSchedule extends React.Component {
             </p>
             <p>TimeZone: {' '}
                 <select value={this.state.timezone} onChange={this.handleChange}>
+                    <option>Choose One</option>
                     <option value='Pacific Time'>Los Angeles (Pacific Standard Time)</option>
                     <option value='Mountain Time'>Denver (Mountain Standard Time)</option>
                     <option value='Central Time'>Dallas (Central Standard Time)</option>
@@ -38,9 +110,14 @@ class UserSchedule extends React.Component {
                     
                 </select></p>
 
-                <h1>CALENDAR GOES HERE</h1>
+               
+                <Calendar calendarData={days}/>
+               
+                <br/>
+              
 
                 <Link to='/buddy-input'><button>Next</button></Link>
+                
         </div>
      );
     }

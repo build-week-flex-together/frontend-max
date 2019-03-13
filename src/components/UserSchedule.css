@@ -1,0 +1,42 @@
+.calendar {
+display: flex;
+flex-direction: row;
+justify-content: center;
+justify-content: space-evenly;
+width: 70%;
+border: 5px solid gray;
+margin-left: 50px;
+margin-right: 50px;
+
+
+
+}
+
+.column {
+   border-right: 2px solid gray;
+   width: 150px;
+    
+}
+
+.time {
+    border-bottom: 1px solid gray;
+    border-top: 1px solid gray;
+    font-size: 13px;
+    cursor: pointer;
+
+    
+}
+.time:hover{
+    background-color: lightgray;
+}
+
+
+button {
+    height: 40px;
+    width: 100px;
+    
+}
+
+.time.selected {
+background-color: darkgrey;
+}
