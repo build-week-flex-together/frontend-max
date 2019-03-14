@@ -34,7 +34,7 @@ handleUser = (event) => {
         <button className='selection-button' value={true} onClick={this.handleUser}>I want to be a companion to my loved one/friend who needs to do low impact exercise</button>
        <br/>
        <br/>
-       <Link to='/user-input'>Next</Link>
+       <Link to='/user-input' className='link-button'><button>Next</button></Link>
         </div>
      );
     }

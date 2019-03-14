@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import Calendar from './Calendar';
-import axios from 'axios';
+
 
 class BuddySchedule extends React.Component {
     constructor() {
@@ -12,15 +12,7 @@ class BuddySchedule extends React.Component {
         }
     }
 
-    // componentDidMount() {
-    //     axios.get('https://flextogether.herokuapp.com/api/invite/:token').then(response => {
-    //       console.log(response);
-    //       this.setState({timeSlots: response.data})
-    //     })
-    //     .catch(err => {
-    //       console.log(err)
-    //     })
-    //   }
+    
 
     render() {
     return ( 
@@ -29,7 +21,7 @@ class BuddySchedule extends React.Component {
             <p>To complete the beta we are asking that people commit to one <br/>
              30 minute time block once a week. Please choose what times work well for you.`</p>
 
-        <Calendar calendarData={this.state.userSchedule}/>
+        <Calendar calendarData={this.state.userSchedule.availability}/>
 
         
         <Link to='/buddy-completed' ><button>SUBMIT</button></Link>

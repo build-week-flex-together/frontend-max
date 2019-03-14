@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Calendar from './Calendar';
 import './UserSchedule.css' 
 
-const timeSlots = [
+const timeslots = [
     '6:00 am',
     '6:30 am',
     '7:00 am',
@@ -33,25 +33,25 @@ const timeSlots = [
 
 const days = [
    {day: 'Monday',
-    timeSlots: timeSlots
+    timeslots: timeslots
 },
 {day: 'Tuesday',
-timeSlots: timeSlots
+timeslots: timeslots
 },
 {day: 'Wednesday',
-timeSlots: timeSlots
+timeslots: timeslots
 },
 {day: 'Thursday',
-timeSlots: timeSlots
+timeslots: timeslots
 },
 {day: 'Friday',
-timeSlots: timeSlots
+timeslots: timeslots
 },
 {day: 'Saturday',
-timeSlots: timeSlots
+timeslots: timeslots
 },
 {day: 'Sunday',
-timeSlots: timeSlots
+timeslots: timeslots
 }
 ]
 

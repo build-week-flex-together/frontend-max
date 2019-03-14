@@ -19,43 +19,47 @@ class BuddyInput extends React.Component {
     addUser = () => {
         // console.log(localStorage.is_companion)
         const newUser = {
-            
-            
                 ...JSON.parse(localStorage.getItem('is_companion')),
-               
-                 ...JSON.parse(localStorage.getItem('myInfo')),
-                 ...JSON.parse(localStorage.getItem('timeZone')),
-            //    'email': JSON.parse(localStorage.getItem('email')),
-            //   'phone_number': JSON.parse(localStorage.getItem('phone_number')),
-            //    'mobility_level': JSON.parse(localStorage.getItem('mobility_level')),
+                ...JSON.parse(localStorage.getItem('myInfo')),
+                ...JSON.parse(localStorage.getItem('timeZone')),
                 ...JSON.parse(localStorage.getItem('userSchedule')),
-            
-            
-                ...JSON.parse(localStorage.getItem('inviteInfo')),
-                
-            //    'recipient_email': JSON.parse(localStorage.getItem('recipient_email')),
-            //   'recipient_phone_number': JSON.parse(localStorage.getItem('recipient_phone_number')),
-            //   'recipient_mobility_level': JSON.parse(localStorage.getItem('recipient_mobility_level'))
-            
-            
+                ...JSON.parse(localStorage.getItem('inviteInfo')), 
         }
         console.log(newUser)
         Axios.post('https://flextogether.herokuapp.com/api/invite', newUser)
         .then(response => {
           console.log(response)
-          this.setState({
-            newUser: response.data,
+        //   this.setState({
+        //     newUser: response.data,
             
-          })
+        //   })
         })
         .catch(err => console.log(err))
       }
 
- 
+      componentDidUpdate(
+        prevprops,
+        {
+          recipient_name,
+          recipient_email,
+          recipient_phone_number,
+          recipient_mobility_level
+        }
+      ) {
+        if (
+          this.state.recipient_name !== recipient_name ||
+          this.state.recipient_email !== recipient_email ||
+          this.state.recipient_phone_number !== recipient_phone_number ||
+          this.state.recipient_mobility_level !== recipient_mobility_level
+        ) {
+          localStorage.setItem('inviteInfo', JSON.stringify(this.state));
+        }
+      }
 
-    componentDidUpdate(){
-        localStorage.setItem('inviteInfo', JSON.stringify(this.state));
-    }
+    // componentDidUpdate(){
+    //     console.log('updated')
+    //     localStorage.setItem('inviteInfo', JSON.stringify(this.state));
+    // }
     
     
 
