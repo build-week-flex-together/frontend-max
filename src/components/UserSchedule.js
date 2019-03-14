@@ -3,55 +3,55 @@ import { Link } from 'react-router-dom';
 import Calendar from './Calendar';
 import './UserSchedule.css' 
 
-const timeSlots = [
-    '6:00AM',
-    '6:30AM',
-    '7:00AM',
-    '7:30AM',
-    '8:00AM',
-    '8:30AM',
-    '9:00AM',
-    '9:30AM',
-    '10:00AM',
-    '10:30AM',
-    '11:00AM',
-    '11:30AM',
-    '12:00PM',
-    '12:30APM',
-    '1:00PM',
-    '1:30PM',
-    '2:00PM',
-    '2:30PM',
-    '3:00PM',
-    '3:30PM',
-    '4:00PM',
-    '4:30PM',
-    '5:00PM',
-    '5:30PM',
+const timeslots = [
+    '6:00 am',
+    '6:30 am',
+    '7:00 am',
+    '7:30 am',
+    '8:00 am',
+    '8:30 am',
+    '9:00 am',
+    '9:30 am',
+    '10:00 am',
+    '10:30 am',
+    '11:00 am',
+    '11:30 am',
+    '12:00 pm',
+    '12:30 pm',
+    '1:00 pm',
+    '1:30 pm',
+    '2:00 pm',
+    '2:30 pm',
+    '3:00 pm',
+    '3:30 pm',
+    '4:00 pm',
+    '4:30 pm',
+    '5:00 pm',
+    '5:30 pm',
     
     ]
 
 const days = [
    {day: 'Monday',
-    slots: timeSlots
+    timeslots: timeslots
 },
 {day: 'Tuesday',
-slots: timeSlots
+timeslots: timeslots
 },
 {day: 'Wednesday',
-slots: timeSlots
+timeslots: timeslots
 },
 {day: 'Thursday',
-slots: timeSlots
+timeslots: timeslots
 },
 {day: 'Friday',
-slots: timeSlots
+timeslots: timeslots
 },
 {day: 'Saturday',
-slots: timeSlots
+timeslots: timeslots
 },
 {day: 'Sunday',
-slots: timeSlots
+timeslots: timeslots
 }
 ]
 
@@ -68,7 +68,7 @@ class UserSchedule extends React.Component {
             // timeBlocks: [
             //     {
             //       day: 'Wednesday',
-            //       slots: ['6:30AM', '7:00AM', '7:30AM', '8:30AM']
+            //       slots: ['6:30 AM', '7:00AM', '7:30AM', '8:30AM']
             //     },
             //     {
             //       day: 'Friday',
@@ -103,10 +103,10 @@ render() {
             <p>TimeZone: {' '}
                 <select value={this.state.timezone} onChange={this.handleChange}>
                     <option>Choose One</option>
-                    <option value='Pacific Time'>Los Angeles (Pacific Standard Time)</option>
-                    <option value='Mountain Time'>Denver (Mountain Standard Time)</option>
-                    <option value='Central Time'>Dallas (Central Standard Time)</option>
-                    <option value='Eastern Time'>New York (Eastern Standard Time)</option>
+                    <option value='America/Los_Angeles'>Los Angeles (PST)</option>
+                    <option value='America/Denver'>Denver (MST)</option>
+                    <option value='America/Chicago'>Chicago (CST)</option>
+                    <option value='America/New_York'>New York (EST)</option>
                     
                 </select></p>
 
@@ -116,7 +116,7 @@ render() {
                 <br/>
               
 
-                <Link to='/buddy-input'><button>Next</button></Link>
+                <Link to='/buddy-input'><button className='calendar-button'>Next</button></Link>
                 
         </div>
      );

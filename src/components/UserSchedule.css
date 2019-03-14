@@ -32,9 +32,31 @@ margin-right: 50px;
 
 
 button {
-    height: 40px;
-    width: 100px;
+    padding-right: 50px;
+    padding-left: 50px;
+    border: 4px solid #002147;
+    border-radius: 10px;
+    background-color: transparent;
+    transition: background-color 300ms ease;
+    font-family: 'Open-Sans', sans-serif;
+    color: #002147;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 9px 15px;
     
+    width: 150px;
+   
+}
+
+button:hover {
+    display: inline-block;
+    padding: 9px 15px;
+    background-color: #002147;
+    color: white;
+    line-height: inherit;
+    text-decoration: none;
+    cursor: pointer;
+
 }
 
 .time.selected {

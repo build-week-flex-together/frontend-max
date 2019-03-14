@@ -8,6 +8,7 @@ import UserCompleted from './components/UserCompleted';
 import BuddySchedule from './components/BuddySchedule';
 import BuddyCompleted from './components/BuddyCompleted';
 import Contact from './components/Contact';
+import EmailVerify from './components/EmailVerify'
 import { Route } from 'react-router-dom';
 
 import './App.css';
@@ -35,6 +36,7 @@ constructor(){
         <Route path='/buddy-schedule' component={BuddySchedule} />
         <Route path='/buddy-completed' component={BuddyCompleted} />
         <Route path='/contact' component={Contact}/>
+        <Route path='/verify/:token' component={EmailVerify} />
 
       </div>
     );
