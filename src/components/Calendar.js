@@ -19,17 +19,17 @@ class Calendar extends React.Component {
 
     componentDidUpdate(){
         if(this.props.location.pathname === '/user-schedule') {
-        localStorage.setItem('userSchedule', JSON.stringify(this.state.availability));
+        localStorage.setItem('userSchedule', JSON.stringify(this.state));
 
     } else if(this.props.location.pathname === '/buddy-schedule') {
-        localStorage.setItem('buddySchedule', JSON.stringify(this.state.availability));
+        localStorage.setItem('buddySchedule', JSON.stringify(this.state));
     }
 }
 
     getClassName = (day, time) => {
         let isSelected = false;
         this.state.availability.forEach(block => {
-          if (block.day === day && block.slots.includes(time)) {
+          if (block.day === day && block.timeSlots.includes(time)) {
             isSelected = true;
           }
         })
@@ -40,20 +40,20 @@ class Calendar extends React.Component {
         let availability = this.state.availability;
         let dayBlock = availability.find(block => block.day === day);
         if (!dayBlock) {
-          dayBlock = { day, slots: [time] };
+          dayBlock = { day, timeSlots: [time] };
           availability = [
             ...this.state.availability,
             dayBlock,
           ];
-        } else if (dayBlock.slots.includes(time)) {
-          const index = dayBlock.slots.indexOf(time);
+        } else if (dayBlock.timeSlots.includes(time)) {
+          const index = dayBlock.timeSlots.indexOf(time);
           dayBlock = {
             ...dayBlock,
-            slots: dayBlock.slots.filter(timeInFilter => timeInFilter !== time)
+            timeSlots: dayBlock.timeSlots.filter(timeInFilter => timeInFilter !== time)
           }; 
           availability = this.state.availability.map(dayFromMap => {
             if (dayFromMap.day === day) {
-                if (!dayBlock.slots.length) return null;
+                if (!dayBlock.timeSlots.length) return null;
               return dayBlock
             }
             return dayFromMap;
@@ -61,8 +61,8 @@ class Calendar extends React.Component {
         } else {
           dayBlock = {
             ...dayBlock,
-            slots: [
-              ...dayBlock.slots,
+            timeSlots: [
+              ...dayBlock.timeSlots,
               time,
             ]
           };
@@ -89,7 +89,7 @@ class Calendar extends React.Component {
                         <h4>{day.day}</h4>
                     {/* time slots class */}
                         <div className='time-slots'>
-                    {day.slots.map(time => (
+                    {day.timeSlots.map(time => (
                         <div className={`time ${this.getClassName(day.day, time)}`} key={time} onClick={() => this.handleTime(day.day, time)} > 
                         <p>{time}</p>
                         </div>
