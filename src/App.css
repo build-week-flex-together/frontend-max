@@ -62,6 +62,10 @@
 
 }
 
+.selection-button.selected {
+  background-color: #002147;
+  }
+
 body {
   color: #002147
 }
@@ -74,4 +78,20 @@ input {
   height: 30px;
   width: 300px;
   font-size: 24px;
+  margin-top: 20px;
+  border-radius: 5px;
+}
+
+select {
+ height: 30px;
+ width: 130px;
+ font-size: 18px;
+  
+}
+
+.choose-button {
+  display: flex;
+  margin-right: 350px;
+  margin-left: 350px;
+  justify-content: space-evenly
 }

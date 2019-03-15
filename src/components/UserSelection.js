@@ -28,10 +28,13 @@ handleUser = (event) => {
     render() {
     return ( 
         <div>
-            <h2>Who Are You?</h2>
-            <h4>Choose 1:</h4>
+            <h1>Who Are You?</h1>
+            <h4 className='choose1'>Choose 1:</h4>
+            <div className='choose-button'>
         <button className='selection-button' value={false} onClick={this.handleUser}>I am interested in low impact exercise</button>
+       
         <button className='selection-button' value={true} onClick={this.handleUser}>I want to be a companion to my loved one/friend who needs to do low impact exercise</button>
+        </div>
        <br/>
        <br/>
        <Link to='/user-input' className='link-button'><button>Next</button></Link>
