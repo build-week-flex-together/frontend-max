@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const Contact = () => {
     return ( 
         <div>
@@ -7,9 +8,9 @@ const Contact = () => {
              that works for both of you. Let's try thing the old <br/>
              fashioned way.
               </h3>
-              <h2>Call Benji and figure out a time that works</h2>
-              <h3>What time works?</h3>
-              <button>Submit</button>
+              <h2>Call Sylvia and figure out a time that works.</h2>
+              
+              
         </div>
      );
 }

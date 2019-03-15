@@ -4,8 +4,8 @@ flex-direction: row;
 justify-content: center;
 justify-content: space-evenly;
 width: 70%;
-border: 5px solid gray;
-margin-left: 50px;
+border: 5px solid #002147;
+margin-left: 213px;
 margin-right: 50px;
 
 
@@ -13,14 +13,14 @@ margin-right: 50px;
 }
 
 .column {
-   border-right: 2px solid gray;
+   border-right: 2px solid #002147;
    width: 150px;
     
 }
 
 .time {
-    border-bottom: 1px solid gray;
-    border-top: 1px solid gray;
+    border-bottom: 1px solid #002147;
+    border-top: 1px solid #002147;
     font-size: 13px;
     cursor: pointer;
 
@@ -45,6 +45,7 @@ button {
     padding: 9px 15px;
     
     width: 150px;
+    margin-bottom: 15px;
    
 }
 
