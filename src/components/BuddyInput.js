@@ -12,7 +12,10 @@ class BuddyInput extends React.Component {
         recipient_name: '',
         recipient_email: '',
         recipient_phone_number: '',
-        recipient_mobility_level: ''
+        recipient_mobility_level: '',
+        clickedLow: false,
+        clickedMed: false,
+        clickedHigh: false
           
     }
     }
@@ -63,12 +66,37 @@ class BuddyInput extends React.Component {
     
     
 
-    handleMobilityChange = (event) => {
+    handleMobilityChangeLow = (event) => {
         // let value = event.target.value;
         // if (event.target.value === '1' || '2' || '3') {
         //   value = parseInt(value, 10)
         // }
-        this.setState({recipient_mobility_level: event.target.value});
+        this.setState({
+            recipient_mobility_level: event.target.value,
+            clickedLow: true
+        });
+      }
+
+      handleMobilityChangeMed = (event) => {
+        // let value = event.target.value;
+        // if (event.target.value === '1' || '2' || '3') {
+        //   value = parseInt(value, 10)
+        // }
+        this.setState({
+            recipient_mobility_level: event.target.value,
+            clickedMed: true
+        });
+      }
+
+      handleMobilityChangeHigh = (event) => {
+        // let value = event.target.value;
+        // if (event.target.value === '1' || '2' || '3') {
+        //   value = parseInt(value, 10)
+        // }
+        this.setState({
+            recipient_mobility_level: event.target.value,
+            clickedHigh: true
+        });
       }
     
     
@@ -108,10 +136,10 @@ class BuddyInput extends React.Component {
                     /> <br/>
                 </form>
                 <h2>Mobility Level (choose one)</h2>
-            {/* Need to implement radio button options from material ui  */}
-                    <button value='Low' onClick={this.handleMobilityChange}>Low</button>
-                    <button value='Medium' onClick={this.handleMobilityChange}>Medium</button>
-                    <button value='High' onClick={this.handleMobilityChange}>High</button>
+           
+                    <button value='Low' onClick={this.handleMobilityChangeLow} className={this.state.clickedLow === true ? 'low-button' : 'null'}>Low</button>
+                    <button value='Medium' onClick={this.handleMobilityChangeMed} className={this.state.clickedMed === true ? 'med-button' : 'null'}>Medium</button>
+                    <button value='High' onClick={this.handleMobilityChangeHigh} className={this.state.clickedHigh === true ? 'high-button' : 'null'}>High</button>
                 <br/>
                 <br/>
                 <br/>

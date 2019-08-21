@@ -13,7 +13,10 @@ this.state = {
     email: '',
     phone_number: '',
     notification_preference: '',
-    mobility_level: ''
+    mobility_level: '',
+    clickedLow: false,
+    clickedMed: false,
+    clickedHigh: false
     
      
 }
@@ -48,12 +51,43 @@ handleChange = (event) => {
 // }
   }
 
-  handleMobilityChange = (event) => {
+  handleMobilityChangeLow = (event) => {
     // let value = event.target.value;
     // if (event.target.value === '1' || '2' || '3') {
     //   value = parseInt(value, 10)
     // }
-    this.setState({mobility_level: event.target.value});
+    this.setState({
+        mobility_level: event.target.value,
+       clickedLow: true
+    
+    });
+
+  }
+
+  handleMobilityChangeMed = (event) => {
+    // let value = event.target.value;
+    // if (event.target.value === '1' || '2' || '3') {
+    //   value = parseInt(value, 10)
+    // }
+    this.setState({
+        mobility_level: event.target.value,
+       clickedMed: true
+    
+    });
+
+  }
+
+  handleMobilityChangeHigh = (event) => {
+    // let value = event.target.value;
+    // if (event.target.value === '1' || '2' || '3') {
+    //   value = parseInt(value, 10)
+    // }
+    this.setState({
+        mobility_level: event.target.value,
+       clickedHigh: true
+    
+    });
+
   }
 
 handleInputChange = (event) => {
@@ -106,11 +140,11 @@ handleInputChange = (event) => {
          
          
          
-                    
-                    <button value='Low' onClick={this.handleMobilityChange}>Low</button>
-                    <button value='Medium' onClick={this.handleMobilityChange}>Medium</button>
-                    <button value='High' onClick={this.handleMobilityChange}>High</button>
-                    
+                    <div className="buttons-selection-input">
+                    <button value='Low' onClick={this.handleMobilityChangeLow} className={this.state.clickedLow === true ? 'low-button' : 'null'}>Low</button>
+                    <button value='Medium' onClick={this.handleMobilityChangeMed} className={this.state.clickedMed === true ? 'med-button' : 'null'}>Medium</button>
+                    <button value='High' onClick={this.handleMobilityChangeHigh} className={this.state.clickedHigh === true ? 'high-button' : 'null'}>High</button>
+                    </div>
                
                 
                 <br/>

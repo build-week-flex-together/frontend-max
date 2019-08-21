@@ -62,8 +62,16 @@
 
 }
 
-.selection-button.selected {
+.selected-button {
+  display: inline-block;
+  padding: 9px 15px;
   background-color: #002147;
+  color: white;
+  line-height: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  width: 275px;
+    height:275px;
   }
 
 body {
@@ -94,4 +102,21 @@ select {
   margin-right: 350px;
   margin-left: 350px;
   justify-content: space-evenly
+}
+
+
+.low-button, .med-button, .high-button{
+  display: inline-block;
+  padding: 9px 15px;
+  background-color: #002147;
+  color: white;
+  line-height: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.buttons-selection-input{
+  display: flex;
+  justify-content: center;
+
 }
